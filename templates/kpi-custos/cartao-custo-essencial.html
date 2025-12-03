@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPI de Custos - Cartão Essencial</title>
+  <style>
+    :root {
+      --fundo: #0f172a;
+      --painel: #111827;
+      --texto-principal: #e5e7eb;
+      --texto-secundario: #9ca3af;
+      --positivo: #34d399;
+      --negativo: #f87171;
+      --borda: rgba(255, 255, 255, 0.08);
+      --gradiente: linear-gradient(135deg, #1f2937, #0f172a 55%);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--fundo);
+      color: var(--texto-principal);
+      padding: 8px;
+    }
+
+    .card {
+      width: 320px;
+      background: var(--gradiente);
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      padding: 16px 18px 14px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--borda);
+      font-size: 18px;
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .label {
+      font-size: 13px;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+      color: var(--texto-secundario);
+    }
+
+    .value {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--borda);
+      color: var(--texto-secundario);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0 6px;
+      color: var(--texto-secundario);
+      font-size: 13px;
+    }
+
+    .progress {
+      position: relative;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--borda);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 64%; /* Substitua pela % do atingimento */
+      background: linear-gradient(90deg, #34d399, #10b981);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--texto-secundario);
+    }
+
+    .delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--positivo);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+
+    .delta.negative {
+      background: rgba(248, 113, 113, 0.1);
+      color: var(--negativo);
+      border-color: rgba(248, 113, 113, 0.35);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="icon">💰</div>
+      <div class="title">
+        <span class="label">Custo Total</span>
+        <div class="value">
+          <span id="valor-principal">R$ 2,34 Mi</span>
+          <span class="badge">Atualizado: Out/2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta">
+      <span>Meta: <strong id="meta">R$ 2,5 Mi</strong></span>
+      <span>Atingimento <strong id="atingimento">64%</strong></span>
+    </div>
+    <div class="progress">
+      <div class="progress-fill" style="width: 64%"></div>
+    </div>
+
+    <div class="footer">
+      <div id="delta" class="delta">
+        <span>▼ -3,8% vs mês anterior</span>
+      </div>
+      <span id="fonte">Fonte: ERP Financeiro</span>
+    </div>
+  </div>
+</body>
+</html>
